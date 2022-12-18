@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Endless_Runner"
         mc:Ignorable="d"
-        Title="Endless Runner" Height="450" Width="800">
+        Title="Endless Runner" Icon="/images/newRunner_08.ico" Height="450" Width="800">
 
     <Canvas Name="MyCanvas" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp" Background="LightBlue">
 
