@@ -66,7 +66,31 @@ namespace Endless_Runner
 
             if(Canvas.GetLeft(background2) < -1262) Canvas.SetLeft(background2, Canvas.GetLeft(background) + background.Width);
 
+            Canvas.SetTop(player, Canvas.GetTop(player) + speed);
+            Canvas.SetLeft(obstacle, Canvas.GetLeft(obstacle) - 12);
+
+            scoreText.Content = "Score: " + score;
+
+            playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width - 15, player.Height - 10);
+
+            obstacleHitBox = new Rect(Canvas.GetLeft(obstacle), Canvas.GetTop(obstacle), obstacle.Width, obstacle.Height);
             
+            groundHitBox = new Rect(Canvas.GetLeft(ground), Canvas.GetTop(ground), ground.Width, ground.Height);
+
+            if(playerHitBox.IntersectsWith(groundHitBox))
+            {
+                speed = 0;
+
+                Canvas.SetTop(player, Canvas.GetTop(ground) - player.Height);
+
+                jumping = false;
+
+                spriteIndex += .5;
+
+                if(spriteIndex > 8) spriteIndex = 1;
+
+                RunSprite(spriteIndex);
+            }
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
