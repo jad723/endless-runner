@@ -59,8 +59,24 @@ namespace Endless_Runner
 
         private void GameEngine(object sender, EventArgs e)
         {
-            Canvas.SetLeft(background, Canvas.GetLeft(background) - 3);
-            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 3);
+            if(score < 10)
+            {
+
+                Canvas.SetLeft(background, Canvas.GetLeft(background) - 3);
+                Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 3);
+            }
+
+            else if(score < 20)
+            {
+                Canvas.SetLeft(background, Canvas.GetLeft(background) - 6);
+                Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 6);
+            }
+
+            else
+            {
+                Canvas.SetLeft(background, Canvas.GetLeft(background) - 10);
+                Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 10);
+            }
 
             if(Canvas.GetLeft(background) < -1262) Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
 
@@ -103,13 +119,40 @@ namespace Endless_Runner
 
             if(force < 0) jumping = false;
 
-            if(Canvas.GetLeft(obstacle) < -50)
+            if (score < 10)
             {
-                Canvas.SetLeft(obstacle, 950);
+                if (Canvas.GetLeft(obstacle) < -50)
+                {
+                    Canvas.SetLeft(obstacle, 950);
 
-                Canvas.SetTop(obstacle, obstaclePosition[rnd.Next(0, obstaclePosition.Length)]);
+                    Canvas.SetTop(obstacle, obstaclePosition[rnd.Next(0, obstaclePosition.Length)]);
 
-                score += 1;
+                    score += 1;
+                }
+            }
+
+            else if(score < 20)
+            {
+                if (Canvas.GetLeft(obstacle) < -50)
+                {
+                    Canvas.SetLeft(obstacle, 850);
+
+                    Canvas.SetTop(obstacle, obstaclePosition[rnd.Next(0, obstaclePosition.Length)]);
+
+                    score += 1;
+                }
+            }
+
+            else
+            {
+                if (Canvas.GetLeft(obstacle) < -50)
+                {
+                    Canvas.SetLeft(obstacle, 750);
+
+                    Canvas.SetTop(obstacle, obstaclePosition[rnd.Next(0, obstaclePosition.Length)]);
+
+                    score += 1;
+                }
             }
 
             if(playerHitBox.IntersectsWith(obstacleHitBox))
