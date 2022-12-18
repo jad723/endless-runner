@@ -91,6 +91,17 @@ namespace Endless_Runner
 
                 RunSprite(spriteIndex);
             }
+
+            if(jumping)
+            {
+                speed = -9;
+
+                force -= 1;
+            }
+
+            else speed = 12;
+
+            if(force < 0) jumping = false;
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
