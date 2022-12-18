@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Endless_Runner
 {
@@ -20,9 +21,65 @@ namespace Endless_Runner
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        DispatcherTimer gameTimer = new DispatcherTimer();
+
+        Rect playerHitBox, groundHitBox, obstacleHitBox;
+
+        bool jumping, gameOver;
+
+        int force = 20, speed = 5, score = 0;
+
+        Random rnd = new Random();
+
+        ImageBrush playerSprite = new ImageBrush();
+        ImageBrush backgroundSprite = new ImageBrush();
+        ImageBrush obstacleSprite = new ImageBrush();
+
+        int[] obstaclePosition = { 320, 315, 310, 305, 300 };
+
+        double spriteIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            MyCanvas.Focus();
+
+            gameTimer.Tick += GameEngine;
+            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
+
+            backgroundSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/background.gif"));
+
+            background.Fill = backgroundSprite;
+            background2.Fill = backgroundSprite;
+
+            StartGame();
+        }
+
+        private void GameEngine(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void KeyIsDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void KeyIsUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void StartGame()
+        {
+
+        }
+
+        private void RunSprite(double i)
+        {
+
         }
     }
 }
