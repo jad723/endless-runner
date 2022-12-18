@@ -59,17 +59,25 @@ namespace Endless_Runner
 
         private void GameEngine(object sender, EventArgs e)
         {
-            
+            Canvas.SetLeft(background, Canvas.GetLeft(background) - 3);
+            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 3); 
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-
+            if(e.Key == Key.Enter && gameOver) StartGame();
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
+            if(e.Key == Key.Space && !jumping && Canvas.GetTop(player) > 260)
+            {
+                jumping = true;
+                force = 15;
+                speed = -12;
 
+                playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_02.gif"));
+            }
         }
 
         private void StartGame()
@@ -85,7 +93,7 @@ namespace Endless_Runner
 
             RunSprite(1);
 
-            obstacleSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/obstacle.gif"));
+            obstacleSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/obstacle.png"));
             obstacle.Fill = obstacleSprite;
 
             jumping = false;
@@ -100,6 +108,42 @@ namespace Endless_Runner
         private void RunSprite(double i)
         {
 
+            switch(i)
+            {
+                case 1:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_01.gif"));
+                    break;
+
+                case 2:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_02.gif"));
+                    break;
+
+                case 3:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_03.gif"));
+                    break;
+
+                case 4:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_04.gif"));
+                    break;
+
+                case 5:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_05.gif"));
+                    break;
+
+                case 6:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_06.gif"));
+                    break;
+
+                case 7:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_07.gif"));
+                    break;
+
+                case 8:
+                    playerSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/newRunner_08.gif"));
+                    break;
+            }
+
+            player.Fill = playerSprite;
         }
     }
 }
