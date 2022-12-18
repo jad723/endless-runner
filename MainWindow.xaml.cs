@@ -59,8 +59,8 @@ namespace Endless_Runner
 
         private void GameEngine(object sender, EventArgs e)
         {
-            Canvas.SetLeft(background, Canvas.GetLeft(background) - 18);
-            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 18);
+            Canvas.SetLeft(background, Canvas.GetLeft(background) - 3);
+            Canvas.SetLeft(background2, Canvas.GetLeft(background2) - 3);
 
             if(Canvas.GetLeft(background) < -1262) Canvas.SetLeft(background, Canvas.GetLeft(background2) + background2.Width);
 
@@ -102,6 +102,15 @@ namespace Endless_Runner
             else speed = 12;
 
             if(force < 0) jumping = false;
+
+            if(Canvas.GetLeft(obstacle) < -50)
+            {
+                Canvas.SetLeft(obstacle, 950);
+
+                Canvas.SetTop(obstacle, obstaclePosition[rnd.Next(0, obstaclePosition.Length)]);
+
+                score += 1;
+            }
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
