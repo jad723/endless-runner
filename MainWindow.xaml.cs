@@ -74,7 +74,27 @@ namespace Endless_Runner
 
         private void StartGame()
         {
+            Canvas.SetLeft(background, 0);
+            Canvas.SetLeft(background2, 1262);
 
+            Canvas.SetLeft(player, 110);
+            Canvas.SetTop(player, 140);
+
+            Canvas.SetLeft(obstacle, 950);
+            Canvas.SetTop(obstacle, 310);
+
+            RunSprite(1);
+
+            obstacleSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/obstacle.gif"));
+            obstacle.Fill = obstacleSprite;
+
+            jumping = false;
+            gameOver = false;
+            score = 0;
+
+            scoreText.Content = "Score: " + score;
+
+            gameTimer.Start();
         }
 
         private void RunSprite(double i)
