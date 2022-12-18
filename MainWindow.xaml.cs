@@ -111,6 +111,30 @@ namespace Endless_Runner
 
                 score += 1;
             }
+
+            if(playerHitBox.IntersectsWith(obstacleHitBox))
+            {
+                gameOver = true;
+
+                gameTimer.Stop();
+            }
+
+            if(gameOver)
+            {
+                obstacle.Stroke = Brushes.Black;
+                obstacle.StrokeThickness = 1;
+
+                player.Stroke = Brushes.Red;
+                player.StrokeThickness = 1;
+
+                scoreText.Content = "Score: " + score + " Press Enter to play again!";
+            }
+
+            else
+            {
+                obstacle.StrokeThickness = 0;
+                player.StrokeThickness = 0;
+            }
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
