@@ -1,0 +1,12 @@
+# Auto generated folders
+obj/*
+bin/*
+
+# Auto generated user files
+*.user
+
+# Auto generated Visual Studio cache
+.vs/*
+
+# pfx files
+*.pfx
